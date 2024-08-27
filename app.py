@@ -21,11 +21,16 @@ livros = [
 ]
 
 # Consultar(todos)
-@app.route('/livros')
+@app.route('/livros', methods=['GET'])
 def obter_livros():
     return jsonify(livros)
 
 # Consultar(id)
+@app.route('/livros/<int:id>', methods=['GET'])
+def consultar_livro_id(id):
+    for livro in livros:
+        if livro.get('id') == id:
+            return jsonify(livro)
 # Editar
 # Excluir
 
